@@ -789,7 +789,7 @@ select:focus { border-color: var(--accent); }
       <label class="section-label">Use Up These Ingredients</label>
       <div class="mode-row">
         <button class="mode-btn active" id="mode-include">Use these</button>
-        <button class="mode-btn" id="mode-leftovers">Leftovers only 🧹</button>
+        <button class="mode-btn" id="mode-leftovers">Leftovers only</button>
       </div>
       <div class="ingredient-input-wrap">
         <input id="ingredient-input" type="text" placeholder="Type an ingredient…" autocomplete="off"/>
@@ -847,7 +847,7 @@ select:focus { border-color: var(--accent); }
     </div>
 
     <button id="btn-generate" class="cta-btn">
-      <span class="dice-spin">🎲</span> Generate 3 Recipes
+      <span class="dice-spin">Generate 3 Recipes
     </button>
 
   </aside>
@@ -861,16 +861,44 @@ select:focus { border-color: var(--accent); }
         <h2>Your next favourite<br><span>meal</span> is one roll away.</h2>
         <p>Set your preferences in the panel on the left, then hit Generate. You'll get three recipe options to choose from — et bon appetit.</p>
       </div>
-      <div id="loading-globe" class="loading-globe">
+      <div id="loading-globe" class="loading-globe hidden">
+      <svg viewBox="0 0 80 80" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <clipPath id="lglobe-clip"><circle cx="40" cy="40" r="32"/></clipPath>
+          <linearGradient id="lglobe-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#1e3a5f"/>
+            <stop offset="100%" style="stop-color:#0a1628"/>
+          </linearGradient>
+          <radialGradient id="lglobe-shine" cx="35%" cy="30%" r="55%">
+            <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:0.15"/>
+            <stop offset="100%" style="stop-color:#38bdf8;stop-opacity:0"/>
+          </radialGradient>
+        </defs>
+        <circle cx="40" cy="40" r="32" fill="url(#lglobe-grad)" stroke="#38bdf8" stroke-width="1.5"/>
+        <g clip-path="url(#lglobe-clip)" class="lglobe-land">
+          <ellipse cx="28" cy="26" rx="12" ry="8" fill="#34d399" opacity="0.85"/>
+          <ellipse cx="54" cy="34" rx="14" ry="9" fill="#34d399" opacity="0.75"/>
+          <ellipse cx="36" cy="52" rx="10" ry="6" fill="#34d399" opacity="0.8"/>
+          <ellipse cx="62" cy="54" rx="8" ry="6" fill="#34d399" opacity="0.7"/>
+          <ellipse cx="16" cy="48" rx="6" ry="8" fill="#34d399" opacity="0.72"/>
+          <ellipse cx="44" cy="18" rx="7" ry="4" fill="#34d399" opacity="0.65"/>
+        </g>
+        <g clip-path="url(#lglobe-clip)" opacity="0.2">
+          <line x1="8" y1="28" x2="72" y2="28" stroke="#38bdf8" stroke-width="0.8"/>
+          <line x1="8" y1="40" x2="72" y2="40" stroke="#38bdf8" stroke-width="0.8"/>
+          <line x1="8" y1="52" x2="72" y2="52" stroke="#38bdf8" stroke-width="0.8"/>
+        </g>
+        <circle cx="40" cy="40" r="32" fill="url(#lglobe-shine)"/>
+      </svg>
       </div>
     </div>
 
     <!-- PICKER -->
     <div id="view-picker" class="view">
       <div class="view-header">
-        <h2>🎲 Pick a Recipe</h2>
+        <h2>Pick a Recipe</h2>
         <div style="display:flex;gap:8px;">
-          <button id="btn-reroll" class="secondary-btn">🎲 Reroll all three</button>
+          <button id="btn-reroll" class="secondary-btn">Reroll all three</button>
           <button id="btn-picker-back" class="secondary-btn">← Back</button>
         </div>
       </div>
