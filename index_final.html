@@ -1606,21 +1606,45 @@ function ageNo(){
     mStartOpen=false;
     document.getElementById('m-start-menu').style.display='none';
   };
-
+/* ── MOBILE WINDOW CONFIG ──────────────────────────────
+   For each page set width, height and marginTop.
+   width/height: any CSS value — '90%', '340px', '85vw', '70vh'
+   marginTop: distance from top of screen — '5vh', '20px', 'auto'
+   Use marginTop:'auto' combined with the justify-content:center
+   on #mobile-site to vertically centre the window.
+   ─────────────────────────────────────────────────── */
+var mConfig={
+  cv:      { width:'90%',  height:'83vh', marginTop:'auto' },
+  misfit:  { width:'90%',  height:'83vh', marginTop:'auto' },
+  bundi:   { width:'90%',  height:'83vh', marginTop:'auto' },
+  folder:  { width:'90%',  height:'auto', marginTop:'auto' },
+  contact: { width:'90%',  height:'auto', marginTop:'auto' },
+  mines:   { width:'90%',  height:'85vh', marginTop:'auto' }
+};
   /* Mobile page switching */
   var mPages=['cv','misfit','bundi','folder','contact','mines'];
-  window.mOpenPage=function(id){
-    mPages.forEach(function(p){
-      var w=document.getElementById('m-win-'+p);
-      if(w)w.classList.remove('m-active');
-    });
-    var target=document.getElementById('m-win-'+id);
-    if(target){
-      target.classList.add('m-active');
-      window.scrollTo({top:0,behavior:'smooth'});
+window.mOpenPage=function(id){
+  mPages.forEach(function(p){
+    var w=document.getElementById('m-win-'+p);
+    if(w){
+      w.classList.remove('m-active');
+      w.style.width='';
+      w.style.height='';
+      w.style.marginTop='';
+      w.style.marginBottom='';
     }
-    window.mCloseStart();
-  };
+  });
+  var target=document.getElementById('m-win-'+id);
+  if(target){
+    var cfg=mConfig[id]||{width:'90%',height:'auto',marginTop:'auto'};
+    target.style.width=cfg.width;
+    target.style.height=cfg.height;
+    target.style.marginTop=cfg.marginTop;
+    target.style.marginBottom=cfg.marginTop==='auto'?'auto':'';
+    target.classList.add('m-active');
+  }
+  window.mCloseStart();
+};
 
   /* Mobile Minesweeper */
   var mMCfg={beginner:{rows:20,cols:16,mines:30},intermediate:{rows:13,cols:13,mines:25}};
