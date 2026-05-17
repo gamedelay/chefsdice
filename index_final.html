@@ -1580,14 +1580,10 @@ function ageNo(){
     var mobile=checkMobile();
     var ms=document.getElementById('mobile-site');
     var tb=document.getElementById('m-taskbar');
-    if(mobile){
-      ms.style.display='flex';
-      tb.style.display='flex';
-    } else {
-      ms.style.display='none';
-      tb.style.display='none';
-    }
-    document.getElementById('m-start-menu').style.display='none';
+    var sm=document.getElementById('m-start-menu');
+    if(ms) ms.style.display=mobile?'flex':'none';
+    if(tb) tb.style.display=mobile?'flex':'none';
+    if(sm) sm.style.display='none';
     mStartOpen=false;
   }
   applyLayout();
