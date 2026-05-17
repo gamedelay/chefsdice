@@ -198,9 +198,9 @@ body{font-family:Arial,sans-serif;font-size:12px;background:#000000;overflow:hid
   body{overflow:auto;height:auto;cursor:default;}
   #desktop,#taskbar,#screensaver,#start-menu,#clippy-wrap{display:none!important;}
   /* Centre windows vertically and horizontally */
-  #mobile-site{display:flex;flex-direction:column;align-items:center;justify-content:center;background: #000000 url('images/back.jpeg') center center/cover no-repeat;overflow:hidden;transform-origin:top left;filter: contrast(1.10) brightness(0.98);height:100vh;padding:30px 30px 30px 30px;}
+  #mobile-site{display:flex;flex-direction:column;align-items:center;justify-content:center;background: #000000 url('images/White.png') center center / 40% auto no-repeat;overflow:hidden;transform-origin:top left;filter: contrast(1.10) brightness(0.98);height:100vh;padding:30px 30px 30px 30px;}
   .m-win{background:#c0c0c0;border:2px solid;border-color:#fff #808080 #808080 #fff;box-shadow:2px 2px 0 #000;margin-bottom:14px;display:none;width:100%;max-width:480px;}
-  .m-win.m-active{display:block;}
+  .m-win.m-active{display:flex;flex-direction:column;max-height:90vh;}
   /* Title bars */
   .m-tb{background:linear-gradient(90deg,#000080,#1084d0);color:#fff;font-size:12px;font-weight:bold;padding:4px 8px;font-family:Arial,sans-serif;display:flex;justify-content:space-between;align-items:center;}
   .m-tb-btns{display:flex;gap:2px;}
@@ -217,8 +217,8 @@ body{font-family:Arial,sans-serif;font-size:12px;background:#000000;overflow:hid
   .m-skill{font-family:'Times New Roman',serif;font-size:11px;line-height:1.2;color:#000;}
   .m-dl-btn{background:#c0c0c0;border:2px solid;border-color:#fff #808080 #808080 #fff;padding:4px 14px;font-size:11px;font-family:Arial,sans-serif;color:#000;text-decoration:none;display:inline-block;margin-top:8px;}
   /* Word doc — white background with scrollbar */
-  .m-word-outer{background:#c0c0c0;padding:8px;}
-  .m-word-doc{background:#fff;padding:20px 24px;border:1px solid #666;box-shadow:2px 2px 6px rgba(0,0,0,0.4);max-height:65vh;overflow-y:scroll;}
+  .m-word-outer{background:#c0c0c0;padding:8px;flex:1;overflow-y:auto;min-height:0;}
+  .m-word-doc{background:#fff;padding:20px 24px;border:1px solid #666;box-shadow:2px 2px 6px rgba(0,0,0,0.4);}
   .m-word-doc::-webkit-scrollbar{width:16px;}
   .m-word-doc::-webkit-scrollbar-track{background:#c0c0c0;}
   .m-word-doc::-webkit-scrollbar-thumb{background:#c0c0c0;border:2px solid;border-color:#fff #808080 #808080 #fff;}
@@ -1352,7 +1352,7 @@ function ageNo(){
 <div id="mobile-site">
 
   <!-- Home -->
-  <!-- CV -->\n  <div class="m-win m-active" id="m-win-cv">
+  <!-- CV -->\n  <div class="m-win" id="m-win-cv">
     <div class="m-tb">
       <span> <img src="images/word.png" style="width:14px;height:14px;image-rendering:pixelated;">Beers.doc </span>
       <div class="m-tb-btns"><div class="m-tb-btn">_</div><div class="m-tb-btn">&#10066;</div><div class="m-tb-btn">✕</div></div>
