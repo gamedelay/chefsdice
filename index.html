@@ -195,12 +195,12 @@ body{font-family:Arial,sans-serif;font-size:12px;background:#000000;overflow:hid
 /* ══ MOBILE ══ */
 #mobile-site{display:none;}
 @media(max-width:768px){
-  body{overflow:auto;height:auto;cursor:default;}
+  body{overflow:hidden;height:100vh;cursor:default;}
   #desktop,#taskbar,#screensaver,#start-menu,#clippy-wrap{display:none!important;}
   /* Centre windows vertically and horizontally */
-  #mobile-site{display:flex;flex-direction:column;align-items:center;justify-content:center;background: #000000 url('images/back.jpeg') center center/cover no-repeat;overflow:hidden;transform-origin:top left;filter: contrast(1.10) brightness(0.98);height:100vh;padding:30px 30px 30px 30px;}
-  .m-win{background:#c0c0c0;border:2px solid;border-color:#fff #808080 #808080 #fff;box-shadow:2px 2px 0 #000;margin-bottom:14px;display:none;width:100%;max-width:480px;}
-  .m-win.m-active{display:block;}
+  #mobile-site{display:flex;flex-direction:column;align-items:center;justify-content:center;background: #000000 url('images/White.png') 50% 40% / 95% auto no-repeat;overflow:hidden;transform-origin:top left;filter: contrast(1.10) brightness(0.98);height:100vh;padding:5px 5px 5px;}
+  .m-win{background:#c0c0c0;border:2px solid;border-color:#fff #808080 #808080 #fff;box-shadow:2px 2px 0 #000;margin-bottom:14px;display:none;width:100%;max-width:480px;height:100vh;}
+  .m-win.m-active{display:flex;flex-direction:column;max-height:90vh;margin-top:auto;margin-bottom:auto;}
   /* Title bars */
   .m-tb{background:linear-gradient(90deg,#000080,#1084d0);color:#fff;font-size:12px;font-weight:bold;padding:4px 8px;font-family:Arial,sans-serif;display:flex;justify-content:space-between;align-items:center;}
   .m-tb-btns{display:flex;gap:2px;}
@@ -217,8 +217,8 @@ body{font-family:Arial,sans-serif;font-size:12px;background:#000000;overflow:hid
   .m-skill{font-family:'Times New Roman',serif;font-size:11px;line-height:1.2;color:#000;}
   .m-dl-btn{background:#c0c0c0;border:2px solid;border-color:#fff #808080 #808080 #fff;padding:4px 14px;font-size:11px;font-family:Arial,sans-serif;color:#000;text-decoration:none;display:inline-block;margin-top:8px;}
   /* Word doc — white background with scrollbar */
-  .m-word-outer{background:#c0c0c0;padding:8px;}
-  .m-word-doc{background:#fff;padding:20px 24px;border:1px solid #666;box-shadow:2px 2px 6px rgba(0,0,0,0.4);max-height:65vh;overflow-y:scroll;}
+  .m-word-outer{background:#c0c0c0;padding:8px;flex:1;overflow-y:auto;min-height:0;}
+  .m-word-doc{background:#fff;padding:20px 24px;border:1px solid #666;box-shadow:2px 2px 6px rgba(0,0,0,0.4);}
   .m-word-doc::-webkit-scrollbar{width:16px;}
   .m-word-doc::-webkit-scrollbar-track{background:#c0c0c0;}
   .m-word-doc::-webkit-scrollbar-thumb{background:#c0c0c0;border:2px solid;border-color:#fff #808080 #808080 #fff;}
@@ -387,7 +387,7 @@ body{font-family:Arial,sans-serif;font-size:12px;background:#000000;overflow:hid
  <img src="images/mine.png" style="width:32px;height:32px;image-rendering:pixelated;"><span class="icon-label">Minesweeper</span>
 </div>
 <div class="icon" id="ico-" style="top:464px;left:14px;" ondblclick="openWin('folder')" onclick="selIcon('folder')">
-  <img src="images/folder.png" style="width:32px;height:32px;image-rendering:pixelated;"><span class="icon-label">Socials</span>
+  <img src="images/folder.png" style="width:32px;height:32px;image-rendering:pixelated;"><span class="icon-label"></span>
 </div>
 
 <!-- CV WINDOW -->
@@ -661,7 +661,7 @@ body{font-family:Arial,sans-serif;font-size:12px;background:#000000;overflow:hid
 <!-- FOLDER WINDOW -->
 <div class="win hidden" id="win-folder" style="width:420px;position:absolute;top:250px;left:300px;z-index:22;">
   <div class="titlebar inactive" id="tb-folder" onmousedown="startDrag(event,'folder')">
-    <span><img src="images/folder.png" style="width:14px;height:14px;image-rendering:pixelated;">&nbsp;&nbsp;socials</span>
+    <span><img src="images/folder.png" style="width:14px;height:14px;image-rendering:pixelated;">&nbsp;&nbsp;</span>
     <div class="titlebar-btns">
       <div class="wbtn" onclick="minimiseWin('folder')">_</div>
       <div class="wbtn" onclick="toggleMax('folder')">&#10066;</div>
@@ -1352,39 +1352,9 @@ function ageNo(){
 <div id="mobile-site">
 
   <!-- Home -->
-  <div class="m-win m-active" id="m-win-home" style="width:100%;align:center;">
+  <!-- CV -->\n  <div class="m-win" id="m-win-cv">
     <div class="m-tb">
-      <span><img src="images/home.png" style="width:14px;height:14px;image-rendering:pixelated;">&nbsp;&nbsp;brendandevoy.com</span>
-      <div class="m-tb-btns"><div class="m-tb-btn">_</div><div class="m-tb-btn">&#10066;</div><div class="m-tb-btn">✕</div></div>
-    </div>
-    <div style="background:#c0c0c0;border-bottom:1px solid #808080;padding:1px 4px;display:flex;font-size:11px;flex-shrink:0;">
-     <span style="padding:2px 8px;color:#000;"><u>F</u>ile</span>
-     <span style="padding:2px 8px;color:#000;"><u>E</u>dit</span>
-     <span style="padding:2px 8px;color:#000;"><u>V</u>iew</span>
-     <span style="padding:2px 8px;color:#000;"><u>H</u>elp</span>
-    </div>
-    <div class="m-body">
-      <div class="m-h1">BRENDAN DEVOY</div>
-      <div class="m-inset" style="display:block;"> 
-        <img class="m-profile" src="images/me.png" alt="Brendan Devoy" style="margin-bottom:10px;">
-        <br>
-        <div>
-          <p style="font-weight:bold;margin-bottom:6px;font-size:12px;">Kia Ora! </p>
-          <p style="font-size:11px;line-height:1.2;color:#000;">I'm a pilsner-loving, Auckland-based creative thinker, looking for opportunities to learn new things and push myself into challenging &amp; uncomfortable situations. With a sales and marketing background in liquor and FMCG, I'm passionate about driving brand success and consumer connection.</p>
-          <br>
-          <p style="font-size:11px;line-height:1.2;color:#000;">Oh, and I like to paint.</p>
-        </div>
-      </div>
-      <div class="m-footer">
-        est. 1995 &nbsp;|&nbsp; +64 021 673 125 &nbsp;|&nbsp; <a href="mailto:hey@brendandevoy.com" style="color:#000080;text-decoration:underline;">hey@brendandevoy.com</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- CV -->
-  <div class="m-win" id="m-win-cv">
-    <div class="m-tb">
-      <span> <img src="images/word.png" style="width:14px;height:14px;image-rendering:pixelated;">Beers.doc </span>
+      <span> <img src="images/word.png" style="width:14px;height:14px;image-rendering:pixelated;">&nbsp;&nbsp;Beers.doc </span>
       <div class="m-tb-btns"><div class="m-tb-btn">_</div><div class="m-tb-btn">&#10066;</div><div class="m-tb-btn">✕</div></div>
     </div>
     <div style="background:#c0c0c0;border-bottom:1px solid #808080;padding:1px 4px;display:flex;font-size:11px;flex-shrink:0;">
@@ -1396,43 +1366,15 @@ function ageNo(){
      <span style="padding:2px 8px;color:#000;"><u>T</u>ools</span>
      <span style="padding:2px 8px;color:#000;"><u>H</u>elp</span>
     </div>
-    <div class="m-word-outer">
-      <div class="m-word-doc">
-        <img src="images/BrendanDevoy.png" alt="Brendan Devoy" style="max-width:100%;margin-bottom:6px;display:block;">
-        <div style="text-align:center;font-size:10px;letter-spacing:4px;color:#555;margin-bottom:12px;text-transform:uppercase;font-family:'Times New Roman',serif;">Curriculum Vitae</div>
-        <hr style="border:none;border-top:2px solid #000;margin-bottom:12px;">
-        <p style="font-family:'Times New Roman',serif;font-size:11px;font-style:italic;line-height:1.2;color:#111;margin-bottom:8px;">I am a results-driven sales and marketing professional with expertise in liquor and FMCG. Skilled in relationship management, stakeholder engagement, and data-driven decision-making, I thrive in fast-paced environments. I’m passionate about driving brand success, revenue growth, and consumer connection through strategic account management and trade execution.</p>
-        <span class="m-sec">Experience</span>
-        <div class="m-job-t">Atomic Coffee &#8212; Account Manager</div>
-        <div class="m-job-m">Mar 2023 &#8211; Jul 2025</div>
-        <br>
-        <div class="m-job-d">Managed key accounts, ensuring optimal sales performance and brand visibility. Developed and executed promotional strategies, driving increased distribution and revenue growth. Strengthened customer relationships, ensuring a symbiotic alignment of their ambitions with wider business and marketing goals.</div>
-        <br>
-        <div class="m-job-t">Futurity &#8212; Sales Manager</div>
-        <div class="m-job-m">Jun 2021 &#8211; Dec 2022</div>
-        <br>
-        <div class="m-job-d">Brought to market NZ’s first 100% commercially compostable bottled water product. Led strategic sales planning, and managed customer relationships, ensuring high satisfaction, repeat business, and market share growth. Utilised CRM tools and data insights to enhance targeting and brand engagement strategies.</div>
-        <br>
-        <div class="m-job-t">Misfit Brewing Co. &#8212; Founder &amp; Sales Lead</div>
-        <div class="m-job-m">Jan 2018 &#8211; Jun 2021</div>
-        <br>
-        <div class="m-job-d">Developed and managed the brand from inception to national distribution, ensuring a strong market presence (50+ stockists). Built and nurtured relationships with distributors and consumers, enhancing brand loyalty and engagement. Leveraged consumer insights and sales data to refine marketing and product strategies.</div>
-        <br>
-        <div class="m-job-t">Lion NZ &#8212; Order Management Executive</div>
-        <div class="m-job-m">Jul 2016 &#8211; Jan 2018</div>
-        <br>
-        <div class="m-job-d">Liaised with various stakeholders, from supply-chain to brand management, to mitigate the effect of changing stock levels. Responsibility and trust were integral, with each department reliant on you to ensure a free-flowing sales channel.</div>
-        <span class="m-sec">Skills</span>
-        <div class="m-skill">▸ Project Management &nbsp; ▸ Commercial Acumen<br>▸ Marketing Strategy &nbsp; ▸ Sales Strategy<br>▸ Stakeholder Management &nbsp; ▸ Data-driven Decisions</div>
-        <span class="m-sec">Education</span>
-        <div class="m-job-t">University of Auckland</div><div class="m-job-m">BCom Marketing — 2013–2015</div>
-        <div class="m-job-t">Live The Dream</div><div class="m-job-m">Enterprise Accelerator 2015–16</div>
-        <div class="m-job-t">Toastmasters International</div><div class="m-job-m">Ponsonby Club 2022–2023</div>
-        <span class="m-sec">Achievements</span>
-        <div class="m-skill">▸ Self-appointed Employee of the Month — record 13 times<br>▸ Nationwide brand expansion across 50+ stockists<br>▸ Managed portfolio equating to $2m+ in annual revenue</div>
-        <div style="margin-top:16px;padding-top:10px;border-top:1px solid #c0c0c0;">
-          <a class="m-dl-btn" href="Brendan_Devoy_CV_2026.pdf" target="_blank">📄 Download CV (PDF)</a>
-        </div>
+        <div class="m-word-outer">
+      <div class="m-word-doc" style="padding:8px;">
+        <img src="images/warhol.jpg" alt="Beer" style="max-width:100%;display:block;margin-bottom:12px;">
+      </div>
+      <div class="m-word-doc" style="padding:8px;margin-top:8px;">
+        <img src="images/basq.jpg" alt="Beer" style="max-width:100%;display:block;margin-bottom:12px;">
+      </div>
+      <div class="m-word-doc" style="padding:8px;margin-top:8px;">
+        <img src="images/har.jpg" alt="Beer" style="max-width:100%;display:block;">
       </div>
     </div>
     <div class="m-sbar">Page 1 | Sec 1 | 1/1 | REC | OVR</div>
@@ -1441,7 +1383,7 @@ function ageNo(){
   <!-- Misfit -->
   <div class="m-win" id="m-win-misfit">
     <div class="m-tb">
-      <span><img src="images/power.png" style="width:14px;height:14px;image-rendering:pixelated;">&nbsp;&nbsp;misfitbeer.ppt</span>
+      <span><img src="images/power.png" style="width:14px;height:14px;image-rendering:pixelated;">&nbsp;&nbsp;About Us.ppt</span>
       <div class="m-tb-btns"><div class="m-tb-btn">_</div><div class="m-tb-btn">&#10066;</div><div class="m-tb-btn">✕</div></div>
     </div>
     <div style="background:#c0c0c0;border-bottom:1px solid #808080;padding:1px 4px;display:flex;font-size:11px;flex-shrink:0;">
@@ -1452,25 +1394,21 @@ function ageNo(){
      <span style="padding:2px 8px;color:#000;">Slide<u>S</u>how</span>
      <span style="padding:2px 8px;color:#000;"><u>H</u>elp</span>
     </div>
-    <div class="m-ppt-outer">
-      <div class="m-ppt-slide">
-        <img src="images/Mlogo.JPG" alt="Misfit Beer Logo" style="max-width:100%;display:block;margin:0 auto 12px;">
+        <div class="m-ppt-outer">
+      <div class="m-ppt-slide" style="padding:0;">
+        <img src="images/ppt1.jpg" alt="Slide 1" style="width:100%;display:block;">
       </div>
-      <div class="m-ppt-slide">
-        <img src="images/misfit6.jpg" alt="Misfit" style="width:100%;display:block;">
+      <div class="m-ppt-slide" style="padding:0;">
+        <img src="images/ppt2.jpg" alt="Slide 2" style="width:100%;display:block;">
       </div>
-      <div class="m-ppt-slide">
-        <p class="m-ppt-p">I founded Misfit — a team of creatives and square pegs set on inventing and pushing boundaries, with an uncompromising approach to crafting the perfect beer.</p>
-        <p class="m-ppt-p">A New Zealand social enterprise brewing company, we fought to restore clean water sources in NZ and the wider Pacific by donating all profits to the cause.</p>
-        <div class="m-ppt-li">50+ stockists nationwide</div>
-        <div class="m-ppt-li">7 SKUs</div>
-        <div class="m-ppt-li" style="font-style:italic;">"Here's to the crazy ones."</div>
+      <div class="m-ppt-slide" style="padding:0;">
+        <img src="images/ppt3.jpg" alt="Slide 3" style="width:100%;display:block;">
       </div>
-      <div class="m-ppt-slide">
-        <div class="m-img-3">
-          <img src="images/misfit2.jpg" alt="Misfit"><img src="images/misfit3.jpg" alt="Misfit"><img src="images/misfit4.jpg" alt="Misfit">
-          <img src="images/misfit5.jpg" alt="Misfit"><img src="images/misfit7.jpg" alt="Misfit"><img src="images/misfit8.jpg" alt="Misfit">
-        </div>
+      <div class="m-ppt-slide" style="padding:0;">
+        <img src="images/ppt4.jpg" alt="Slide 4" style="width:100%;display:block;">
+      </div>
+      <div class="m-ppt-slide" style="padding:0;">
+        <img src="images/misfit6.jpg" alt="Slide 5" style="width:100%;display:block;">
       </div>
     </div>
     <div class="m-sbar">Slide 1–4 | @misfitbeer | Normal View</div>
@@ -1479,7 +1417,7 @@ function ageNo(){
   <!-- Bundi / Paint -->
   <div class="m-win" id="m-win-bundi">
     <div class="m-tb">
-      <span><img src="images/paint.png" style="width:14px;height:14px;image-rendering:pixelated;">&nbsp;&nbsp;bundipaints.bmp </span>
+      <span><img src="images/paint.png" style="width:14px;height:14px;image-rendering:pixelated;">&nbsp;&nbsp;Pics.bmp </span>
       <div class="m-tb-btns"><div class="m-tb-btn">_</div><div class="m-tb-btn">&#10066;</div><div class="m-tb-btn">✕</div></div>
     </div>
     <div style="background:#c0c0c0;border-bottom:1px solid #808080;padding:1px 4px;display:flex;font-size:11px;flex-shrink:0;">
@@ -1498,21 +1436,24 @@ function ageNo(){
         <div class="m-pt"><img src="images/paint1.png" style="width:25px;height:25px;image-rendering:pixelated;"></div><div class="m-pt"><img src="images/paint12.png" style="width:25px;height:25px;image-rendering:pixelated;"></div>
         <div class="m-pt">&#x25A2;</div><div class="m-pt">&#x2B20;</div>
       </div>
-      <div class="m-paint-canvas">
+            <div class="m-paint-canvas">
         <div class="m-img-4">
-          <a href="https://open.spotify.com/album/4gylHoAp7UM7oEQuPzJsMM?si=oa1c4eNOTNq5g_hLd2tvPQ" target="_blank">
-             <img class="paint-img" src="images/bundi1.jpg" alt="Artwork1" style="cursor:pointer;">
-            </a>
-          <img src="images/bundi2.jpg" alt="Art">
-          <img src="images/bundi3.jpg" alt="Art"><img src="images/bundi4.jpg" alt="Art">
+          <img src="images/misfit2.jpg" alt="Artwork1" style="cursor:zoom-in;">
+          <img src="images/misfit3.jpg" alt="Artwork2" style="cursor:zoom-in;">
+          <img src="images/misfit4.jpg" alt="Artwork3" style="cursor:zoom-in;">
+          <img src="images/misfit7.jpg" alt="Artwork4" style="cursor:zoom-in;">
         </div>
         <div class="m-img-4">
-          <img src="images/bundi5.jpg" alt="Art"><img src="images/bundi6.jpg" alt="Art">
-          <img src="images/bundi7.jpg" alt="Art"><img src="images/bundi8.jpg" alt="Art">
+          <img src="images/misfit5.jpg" alt="Artwork5" style="cursor:zoom-in;">
+          <img src="images/misfit8.jpg" alt="Artwork6" style="cursor:zoom-in;">
+          <img src="images/gameday.jpg" alt="Artwork7" style="cursor:zoom-in;">
+          <img src="images/bday.jpg" alt="Artwork8" style="cursor:zoom-in;">
         </div>
         <div class="m-img-4">
-          <img src="images/bundi9.jpg" alt="Art"><img src="images/bundi10.jpg" alt="Art">
-          <img src="images/bundi11.jpg" alt="Art"><img src="images/bundi12.jpg" alt="Art">
+          <img src="images/shirt.jpeg" alt="Artwork9" style="cursor:zoom-in;">
+          <img src="images/secretsanta.jpg" alt="Artwork10" style="cursor:zoom-in;">
+          <img src="images/3.jpg" alt="Artwork11" style="cursor:zoom-in;">
+          <img src="images/fresh.jpg" alt="Artwork12" style="cursor:zoom-in;">
         </div>
       </div>
     </div>
@@ -1531,10 +1472,41 @@ function ageNo(){
     <div class="m-sbar">For Help, click Help Topics on the Help Menu.</div>
   </div>
 
+  <!-- Folder / Socials -->
+  <div class="m-win" id="m-win-folder">
+    <div class="m-tb">
+      <span><img src="images/folder.png" style="width:14px;height:14px;image-rendering:pixelated;">&nbsp;&nbsp;Socials</span>
+      <div class="m-tb-btns"><div class="m-tb-btn">_</div><div class="m-tb-btn">✕</div></div>
+    </div>
+    <div style="background:#c0c0c0;border-bottom:1px solid #808080;padding:1px 4px;display:flex;font-size:11px;flex-shrink:0;">
+     <span style="padding:2px 8px;color:#000;"><u>F</u>ile</span>
+     <span style="padding:2px 8px;color:#000;"><u>E</u>dit</span>
+     <span style="padding:2px 8px;color:#000;"><u>V</u>iew</span>
+     <span style="padding:2px 8px;color:#000;"><u>H</u>elp</span>
+    </div>
+    <div style="background:#c0c0c0;border-bottom:1px solid #808080;padding:2px 6px;display:flex;align-items:center;gap:6px;font-size:11px;flex-shrink:0;">
+      <span style="color:#000;">Address</span>
+      <div style="flex:1;background:#fff;border:2px solid;border-color:#808080 #fff #fff #808080;padding:1px 4px;font-size:11px;color:#000;">C:\socials</div>
+    </div>
+    <div class="m-body" style="background:#fff;min-height:120px;display:flex;gap:12px;padding:16px;">
+      <div onclick="window.open('https://www.instagram.com/misfitbeer','_blank')"
+           style="display:flex;flex-direction:column;align-items:center;gap:4px;width:80px;cursor:pointer;">
+        <span style="font-size:32px;">📄</span>
+        <span style="font-size:11px;font-family:Arial,sans-serif;color:#000;text-align:center;">instagram.link</span>
+      </div>
+      <div onclick="window.open('https://www.facebook.com/misfitbeer','_blank')"
+           style="display:flex;flex-direction:column;align-items:center;gap:4px;width:80px;cursor:pointer;">
+        <span style="font-size:32px;">📄</span>
+        <span style="font-size:11px;font-family:Arial,sans-serif;color:#000;text-align:center;">facebook.link</span>
+      </div>
+    </div>
+    <div class="m-sbar">2 object(s)</div>
+  </div>
+
   <!-- Contact -->
   <div class="m-win" id="m-win-contact" style="margin-top:100px;">
     <div class="m-tb">
-      <span><img src="images/contact.png" style="width:14px;height:14px;image-rendering:pixelated;">&nbsp;&nbsp;Contact Brendan</span>
+      <span><img src="images/contact.png" style="width:14px;height:14px;image-rendering:pixelated;">&nbsp;&nbsp;Contact Misfit</span>
       <div class="m-tb-btns"><div class="m-tb-btn">_</div><div class="m-tb-btn">✕</div></div>
     </div>
     <div style="background:#c0c0c0;border-bottom:1px solid #808080;padding:1px 4px;display:flex;font-size:11px;flex-shrink:0;">
@@ -1543,7 +1515,7 @@ function ageNo(){
      <span style="padding:2px 8px;color:#000;"><u>H</u>elp</span>
     </div>
     <div class="m-body">
-      <div style="font-size:11px;margin-bottom:10px;color:#000;">Send a message to <a href="mailto:hey@brendandevoy.com">hey@brendandevoy.com</a></div>
+      <div style="font-size:11px;margin-bottom:10px;color:#000;">Send a message to <a href="mailto:hey@brendandevoy.com">hey@misfitbrewing.co.nz</a></div>
       <label style="font-size:11px;display:block;margin-bottom:3px;">Your name:</label>
       <input class="m-input" id="m-name" type="text" placeholder="Full name">
       <label style="font-size:11px;display:block;margin-bottom:3px;">Your email:</label>
@@ -1551,7 +1523,7 @@ function ageNo(){
       <label style="font-size:11px;display:block;margin-bottom:3px;">Message:</label>
       <textarea class="m-input m-textarea" id="m-msg" placeholder="Type your message here..."></textarea>
       <button class="m-send-btn" onclick="mobileSubmit()">✉️ Send</button>
-      <div id="m-confirm" style="display:none;margin-top:10px;font-size:11px;font-family:Arial,sans-serif;color:#000;">✅ Sent! Brendan will get back to you soon.</div>
+      <div id="m-confirm" style="display:none;margin-top:10px;font-size:11px;font-family:Arial,sans-serif;color:#000;">✅ Sent! We will get back to you soon.</div>
     </div>
     <div class="m-sbar">Ready to send</div>
   </div>
@@ -1587,12 +1559,13 @@ function ageNo(){
 <div id="m-start-menu" style="display:none;">
   <div class="m-sidebar"><span class="m-sidebar-text">Windows 95</span></div>
   <div class="m-menu-inner">
-    <div class="m-menu-item" onclick="mOpenPage('cv')"><img src="images/word.png" style="width:18px;height:18px;image-rendering:pixelated;">CV.doc</div>
-    <div class="m-menu-item" onclick="mOpenPage('misfit')"><img src="images/power.png" style="width:18px;height:18px;image-rendering:pixelated;">@misfitbeer</div>
-    <div class="m-menu-item" onclick="mOpenPage('bundi')"><img src="images/paint.png" style="width:18px;height:18px;image-rendering:pixelated;">@bundipaints</div>
+    <div class="m-menu-item" onclick="mOpenPage('misfit')"><img src="images/power.png" style="width:18px;height:18px;image-rendering:pixelated;">About Us.ppt</div>
+    <div class="m-menu-item" onclick="mOpenPage('cv')"><img src="images/word.png" style="width:18px;height:18px;image-rendering:pixelated;">Beers.doc</div>
+    <div class="m-menu-item" onclick="mOpenPage('bundi')"><img src="images/paint.png" style="width:18px;height:18px;image-rendering:pixelated;">Pics.bmp</div>
+    <div class="m-menu-item" onclick="mOpenPage('folder')"><img src="images/folder.png" style="width:18px;height:18px;image-rendering:pixelated;">Socials</div>
     <div class="m-menu-item" onclick="mOpenPage('contact')"><img src="images/contact.png" style="width:18px;height:18px;image-rendering:pixelated;">Contact.msg</div>
     <div class="m-menu-item" onclick="mOpenPage('mines')"><img src="images/mine.png" style="width:18px;height:18px;image-rendering:pixelated;">Minesweeper</div>
-    <div class="m-menu-item" onclick="mOpenPage('home')"><img src="images/home.png" style="width:18px;height:18px;image-rendering:pixelated;">Home</div>
+
   </div>
 </div>
 
@@ -1633,21 +1606,45 @@ function ageNo(){
     mStartOpen=false;
     document.getElementById('m-start-menu').style.display='none';
   };
-
+/* ── MOBILE WINDOW CONFIG ──────────────────────────────
+   For each page set width, height and marginTop.
+   width/height: any CSS value — '90%', '340px', '85vw', '70vh'
+   marginTop: distance from top of screen — '5vh', '20px', 'auto'
+   Use marginTop:'auto' combined with the justify-content:center
+   on #mobile-site to vertically centre the window.
+   ─────────────────────────────────────────────────── */
+var mConfig={
+  cv:      { width:'auto',  height:'77vh', marginTop:'auto' },
+  misfit:  { width:'auto',  height:'77vh', marginTop:'auto' },
+  bundi:   { width:'auto',  height:'77vh', marginTop:'auto' },
+  folder:  { width:'auto',  height:'auto', marginTop:'15vh' },
+  contact: { width:'auto',  height:'auto', marginTop:'15vh' },
+  mines:   { width:'85vw',  height:'65vh', marginTop:'auto' }
+};
   /* Mobile page switching */
-  var mPages=['home','cv','misfit','bundi','contact','mines'];
-  window.mOpenPage=function(id){
-    mPages.forEach(function(p){
-      var w=document.getElementById('m-win-'+p);
-      if(w)w.classList.remove('m-active');
-    });
-    var target=document.getElementById('m-win-'+id);
-    if(target){
-      target.classList.add('m-active');
-      window.scrollTo({top:0,behavior:'smooth'});
+  var mPages=['cv','misfit','bundi','folder','contact','mines'];
+window.mOpenPage=function(id){
+  mPages.forEach(function(p){
+    var w=document.getElementById('m-win-'+p);
+    if(w){
+      w.classList.remove('m-active');
+      w.style.width='';
+      w.style.height='';
+      w.style.marginTop='';
+      w.style.marginBottom='';
     }
-    window.mCloseStart();
-  };
+  });
+  var target=document.getElementById('m-win-'+id);
+  if(target){
+    var cfg=mConfig[id]||{width:'90%',height:'auto',marginTop:'auto'};
+    target.style.width=cfg.width;
+    target.style.height=cfg.height;
+    target.style.marginTop=cfg.marginTop;
+    target.style.marginBottom=cfg.marginTop==='auto'?'auto':'';
+    target.classList.add('m-active');
+  }
+  window.mCloseStart();
+};
 
   /* Mobile Minesweeper */
   var mMCfg={beginner:{rows:20,cols:16,mines:30},intermediate:{rows:13,cols:13,mines:25}};
